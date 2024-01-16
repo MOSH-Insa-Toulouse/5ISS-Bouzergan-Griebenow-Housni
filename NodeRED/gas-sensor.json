@@ -1,0 +1,202 @@
+[
+    {
+        "id": "db7750432373382a",
+        "type": "tab",
+        "label": "Gas sensor",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5578fe10a1a0cb3d",
+        "type": "mqtt in",
+        "z": "db7750432373382a",
+        "name": "",
+        "topic": "application/ac37257c-12e1-4f4a-8ac4-40bb3b86ae5a/device/0004a30b00f42a1a/#",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0a741decea0e77e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "70a9f36fc81e9629"
+            ]
+        ]
+    },
+    {
+        "id": "51b563e23d4c06e8",
+        "type": "base64",
+        "z": "db7750432373382a",
+        "name": "",
+        "action": "b64",
+        "property": "payload",
+        "x": 820,
+        "y": 280,
+        "wires": [
+            [
+                "d699fb702b8efa03",
+                "c091dfb0740979b8"
+            ]
+        ]
+    },
+    {
+        "id": "d699fb702b8efa03",
+        "type": "debug",
+        "z": "db7750432373382a",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "70a9f36fc81e9629",
+        "type": "function",
+        "z": "db7750432373382a",
+        "name": "function 1",
+        "func": "\n\nvar inputData = msg.payload;\n\n\nvar extractedData = inputData.data;\n\n\nmsg.payload = extractedData;\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 280,
+        "wires": [
+            [
+                "51b563e23d4c06e8"
+            ]
+        ]
+    },
+    {
+        "id": "c091dfb0740979b8",
+        "type": "ui_chart",
+        "z": "db7750432373382a",
+        "name": "",
+        "group": "aa3d146cf12befcd",
+        "order": 3,
+        "width": "4",
+        "height": "3",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "250",
+        "removeOlder": "3",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6bd7f29aa1e4effc",
+        "type": "comment",
+        "z": "db7750432373382a",
+        "name": "Mqtt",
+        "info": "",
+        "x": 50,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a0a741decea0e77e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "srv-chirpstack.insa-toulouse.fr",
+        "port": "1883",
+        "tls": "f257e778c7b8a374",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "aa3d146cf12befcd",
+        "type": "ui_group",
+        "name": "Gaz",
+        "tab": "6bc52bc1dc287ea9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f257e778c7b8a374",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "cert.crt",
+        "keyname": "cert.key",
+        "caname": "ca.crt",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "6bc52bc1dc287ea9",
+        "type": "ui_tab",
+        "name": "Gaz",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
